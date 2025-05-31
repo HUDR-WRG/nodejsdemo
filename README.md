@@ -32,7 +32,7 @@
 
 ### 环境要求
 
-- Node.js 14.0+
+- [Node.js](https://nodejs.org/zh-cn) 14.0+
 - MySQL 5.7+
 - 微信开发者工具
 
