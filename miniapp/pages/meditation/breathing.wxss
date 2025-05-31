@@ -1,0 +1,279 @@
+.breathing-container {
+  min-height: 100vh;
+  background-color: #FFF9F5;
+  padding: 0 30rpx;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 40rpx 0 20rpx;
+  position: relative;
+}
+
+.back-btn {
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-back {
+  width: 30rpx;
+  height: 30rpx;
+  border-top: 4rpx solid #333;
+  border-left: 4rpx solid #333;
+  transform: rotate(-45deg);
+}
+
+.title {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  font-size: 36rpx;
+  font-weight: 500;
+}
+
+/* 模式选择 */
+.mode-selection {
+  margin-top: 60rpx;
+}
+
+.mode-title {
+  font-size: 30rpx;
+  font-weight: 500;
+  margin-bottom: 20rpx;
+}
+
+.modes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.mode-item {
+  background: white;
+  border-radius: 12rpx;
+  padding: 24rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.mode-item.active {
+  background: #FF8F8F;
+  color: white;
+  transform: scale(1.02);
+}
+
+.mode-name {
+  font-size: 28rpx;
+  font-weight: 500;
+  margin-bottom: 8rpx;
+}
+
+.mode-desc {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.mode-item.active .mode-desc {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* 呼吸动画区 */
+.breathing-animation {
+  margin-top: 60rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.circle-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40rpx;
+}
+
+.breathing-circle {
+  width: 320rpx;
+  height: 320rpx;
+  border-radius: 50%;
+  background-color: #6EB5FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, background-color 0.5s ease;
+}
+
+.inner-text {
+  color: white;
+  font-size: 40rpx;
+  font-weight: bold;
+}
+
+/* 呼吸动画状态 */
+.breathing-circle.inhale {
+  animation: inhale 4s ease-in-out forwards;
+}
+
+.breathing-circle.hold {
+  animation: none;
+  transform: scale(1.5);
+}
+
+.breathing-circle.exhale {
+  animation: exhale 8s ease-in-out forwards;
+}
+
+.breathing-circle.reset {
+  animation: none;
+  transform: scale(1);
+}
+
+@keyframes inhale {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.5);
+  }
+}
+
+@keyframes exhale {
+  from {
+    transform: scale(1.5);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.breathing-guide {
+  font-size: 32rpx;
+  color: #333;
+  text-align: center;
+  margin-bottom: 40rpx;
+  min-height: 45rpx;
+  font-weight: 500;
+}
+
+/* 时间设置 */
+.duration-setting {
+  width: 100%;
+  margin-bottom: 40rpx;
+}
+
+.duration-label {
+  font-size: 28rpx;
+  margin-bottom: 16rpx;
+  text-align: center;
+}
+
+.duration-options {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20rpx;
+}
+
+.duration-option {
+  flex: 1;
+  min-width: 140rpx;
+  text-align: center;
+  padding: 16rpx 0;
+  background: white;
+  border-radius: 8rpx;
+  font-size: 26rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);
+}
+
+.duration-option.active {
+  background: #FF8F8F;
+  color: white;
+}
+
+/* 控制按钮 */
+.control-buttons {
+  margin-top: 20rpx;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.start-btn {
+  width: 80%;
+  padding: 24rpx 0;
+  background: #6EB5FF;
+  color: white;
+  border-radius: 50rpx;
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: 500;
+  box-shadow: 0 4rpx 12rpx rgba(110, 181, 255, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.start-btn.stop-btn {
+  background: #FF8F8F;
+  box-shadow: 0 4rpx 12rpx rgba(255, 143, 143, 0.3);
+}
+
+.start-btn:active {
+  transform: scale(0.95);
+}
+
+/* 练习说明 */
+.instructions-section {
+  margin-top: 60rpx;
+  background: white;
+  border-radius: 12rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.05);
+}
+
+.instructions-title {
+  font-size: 28rpx;
+  font-weight: 500;
+  margin-bottom: 20rpx;
+  color: #333;
+}
+
+.instructions-content {
+  font-size: 26rpx;
+  line-height: 1.6;
+  color: #666;
+}
+
+/* 倒计时 */
+.countdown {
+  position: fixed;
+  bottom: 40rpx;
+  left: 30rpx;
+  right: 30rpx;
+  background: white;
+  border-radius: 12rpx;
+  padding: 24rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.1);
+}
+
+.time-left {
+  text-align: center;
+  font-size: 28rpx;
+  margin-bottom: 16rpx;
+  font-weight: 500;
+}
+
+.progress-bar {
+  height: 12rpx;
+  background: #EEEEEE;
+  border-radius: 6rpx;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  background: #6EB5FF;
+  transition: width 1s linear;
+} 

@@ -1,0 +1,109 @@
+<wxs module="m1">
+var getColor = function(score) {
+  if (score <= 3) return '#F76D57';
+  if (score <= 6) return '#6EB5FF';
+  return '#67C23A';
+}
+
+var getMoodText = function(score) {
+  if (score <= 3) return '需要关怀';
+  if (score <= 6) return '平静舒缓';
+  return '积极向上';
+}
+
+module.exports = {
+  getColor: getColor,
+  getMoodText: getMoodText
+};
+</wxs>
+
+<view class="container">
+  <!-- 自定义导航栏 -->
+  <view class="nav-bar">
+    <view class="nav-back" bindtap="goBack">
+      <view class="back-icon">‹</view>
+    </view>
+    <view class="nav-title">心情记录</view>
+    <view class="nav-action" bindtap="shareDiary">
+      <view class="action-icon">⋯</view>
+    </view>
+  </view>
+
+  <!-- 内容区域 -->
+  <scroll-view scroll-y class="content-scroll" wx:if="{{!isLoading && diary}}">
+    <!-- 日期卡片 -->
+    <view class="date-card">
+      <view class="date-text">{{diary.formatted_date}}</view>
+      <view class="weekday">{{diary.weekday || ''}}</view>
+    </view>
+
+    <!-- 心情卡片 -->
+    <view class="mood-card">
+      <view class="mood-header">
+        <view class="mood-icon" style="background-color: {{m1.getColor(diary.mood_score)}}">
+          <text class="mood-emoji">{{diary.mood_score <= 3 ? '😞' : diary.mood_score <= 6 ? '😌' : '😊'}}</text>
+        </view>
+        <view class="mood-info">
+          <view class="mood-score">{{diary.mood_score}}/10</view>
+          <view class="mood-label">{{m1.getMoodText(diary.mood_score)}}</view>
+        </view>
+      </view>
+      <view class="mood-bar">
+        <view class="mood-progress" style="width: {{diary.mood_score * 10}}%; background-color: {{m1.getColor(diary.mood_score)}}"></view>
+      </view>
+    </view>
+
+    <!-- 内容卡片 -->
+    <view class="content-card">
+      <view class="content-header">
+        <view class="content-title">今日心得</view>
+      </view>
+      <view class="content-text">{{diary.content}}</view>
+    </view>
+
+    <!-- 标签卡片 -->
+    <view class="tags-card" wx:if="{{diary.tags && diary.tags.length > 0}}">
+      <view class="tags-header">
+        <view class="tags-title">情绪标签</view>
+      </view>
+      <view class="tags-list">
+        <view class="tag-item" wx:for="{{diary.tags}}" wx:key="*this">
+          <text class="tag-text">{{item}}</text>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 操作区域 -->
+    <view class="action-area">
+      <button class="edit-btn" bindtap="editDiary">
+        <text class="btn-icon">✏️</text>
+        <text class="btn-text">编辑</text>
+      </button>
+      <button class="delete-btn" bindtap="deleteDiary">
+        <text class="btn-icon">🗑️</text>
+        <text class="btn-text">删除</text>
+      </button>
+    </view>
+
+    <!-- 底部安全区域 -->
+    <view class="safe-area-bottom"></view>
+  </scroll-view>
+
+  <!-- 加载状态 -->
+  <view class="loading-wrapper" wx:if="{{isLoading}}">
+    <view class="loading-card">
+      <view class="loading-spinner"></view>
+      <text class="loading-text">加载中...</text>
+    </view>
+  </view>
+
+  <!-- 错误状态 -->
+  <view class="error-wrapper" wx:if="{{!isLoading && !diary}}">
+    <view class="error-card">
+      <view class="error-icon">😔</view>
+      <text class="error-title">加载失败</text>
+      <text class="error-desc">无法获取日记内容</text>
+      <button class="retry-btn" bindtap="goBack">返回上页</button>
+    </view>
+  </view>
+</view> 

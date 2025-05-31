@@ -1,0 +1,50 @@
+<view class="container">
+  <view class="header">
+    <image class="logo" src="/static/images/logo.png" mode="aspectFit"></image>
+    <view class="title">心灵伴侣</view>
+    <view class="subtitle">一站式心理关怀服务</view>
+    <view class="user-info">
+      <image class="avatar" src="{{userInfo.avatarUrl || '/static/images/default-avatar.png'}}" mode="aspectFill"></image>
+      <text class="nickname">{{userInfo.nickname || '游客'}}</text>
+      <view class="logout-btn" bindtap="logout">退出</view>
+    </view>
+  </view>
+  
+  <view class="grid">
+    <view class="grid-item" bindtap="navigateTo" data-path="/pages/treehole/index">
+      <view class="grid-item-content">
+        <image class="grid-icon" src="/static/images/treehole.png" mode="aspectFit"></image>
+        <text class="grid-text">树洞倾述</text>
+        <text class="grid-desc">匿名倾诉你的心声</text>
+      </view>
+    </view>
+    
+    <view class="grid-item" bindtap="navigateTo" data-path="/pages/psychtest/index">
+      <view class="grid-item-content">
+        <image class="grid-icon" src="/static/images/test.png" mode="aspectFit"></image>
+        <text class="grid-text">心理测试</text>
+        <text class="grid-desc">科学评估心理状态</text>
+      </view>
+    </view>
+    
+    <view class="grid-item" bindtap="navigateTo" data-path="/pages/emotion/index">
+      <view class="grid-item-content">
+        <image class="grid-icon" src="/static/images/diary.png" mode="aspectFit"></image>
+        <text class="grid-text">情绪日记</text>
+        <text class="grid-desc">记录每日情绪变化</text>
+      </view>
+    </view>
+    
+    <view class="grid-item" bindtap="navigateTo" data-path="/pages/meditation/index">
+      <view class="grid-item-content">
+        <image class="grid-icon" src="/static/images/meditation.png" mode="aspectFit"></image>
+        <text class="grid-text">冥想放松</text>
+        <text class="grid-desc">专业引导放松身心</text>
+      </view>
+    </view>
+  </view>
+  
+  <view class="footer">
+    <text>关爱自己，从心开始</text>
+  </view>
+</view> 

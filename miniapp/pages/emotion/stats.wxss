@@ -1,0 +1,282 @@
+/**
+ * 情绪统计页面样式
+ */
+
+.container {
+  min-height: 100vh;
+  background-color: var(--color-background);
+  padding: var(--spacing-sm);
+}
+
+/* 头部区域 */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-md) 0;
+  margin-bottom: var(--spacing-sm);
+}
+
+.back-icon {
+  width: 80rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  font-size: 40rpx;
+  color: var(--color-primary);
+}
+
+.title {
+  font-size: var(--font-size-title);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+  text-align: center;
+  flex: 1;
+}
+
+.placeholder {
+  width: 80rpx;
+}
+
+/* 时间筛选 */
+.time-filter {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--spacing-md);
+  background-color: #FFFFFF;
+  border-radius: var(--radius-medium);
+  box-shadow: var(--shadow-card);
+  padding: var(--spacing-xs);
+  animation: fadeIn var(--animation-normal) ease;
+}
+
+.time-option {
+  flex: 1;
+  height: 64rpx;
+  line-height: 64rpx;
+  text-align: center;
+  font-size: var(--font-size-content);
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-small);
+  margin: 0 var(--spacing-xxs);
+  transition: all var(--animation-fast);
+}
+
+.time-option.active {
+  background-color: var(--color-accent);
+  color: #FFFFFF;
+  font-weight: var(--font-weight-medium);
+  box-shadow: 0 2rpx 8rpx rgba(110, 181, 255, 0.3);
+}
+
+/* 统计卡片 */
+.stats-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+  animation: fadeIn var(--animation-normal) ease;
+  animation-delay: 0.1s;
+  animation-fill-mode: both;
+}
+
+.stats-card {
+  background-color: #FFFFFF;
+  border-radius: var(--radius-medium);
+  box-shadow: var(--shadow-card);
+  padding: var(--spacing-sm);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 160rpx;
+}
+
+.stats-label {
+  font-size: var(--font-size-caption);
+  color: var(--color-text-tertiary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.stats-value {
+  font-size: 48rpx;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+}
+
+/* 每个卡片不同颜色 */
+.stats-card:nth-child(1) .stats-value {
+  color: var(--color-primary);
+}
+
+.stats-card:nth-child(2) .stats-value {
+  color: var(--color-accent);
+}
+
+.stats-card:nth-child(3) .stats-value {
+  color: var(--color-success);
+}
+
+/* 情绪趋势 */
+.section {
+  background-color: #FFFFFF;
+  border-radius: var(--radius-medium);
+  box-shadow: var(--shadow-card);
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.mood-trend-section {
+  animation: fadeIn var(--animation-normal) ease;
+  animation-delay: 0.2s;
+  animation-fill-mode: both;
+}
+
+.section-title {
+  font-size: var(--font-size-subtitle);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.chart-placeholder {
+  height: 400rpx;
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-small);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.chart-info {
+  font-size: var(--font-size-caption);
+  color: var(--color-text-tertiary);
+  margin-bottom: var(--spacing-md);
+}
+
+.trend-lines {
+  width: 100%;
+  height: 300rpx;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  padding: 0 var(--spacing-xs);
+}
+
+.trend-line {
+  width: 40rpx;
+  background-color: var(--color-accent-light);
+  border-radius: var(--radius-small) var(--radius-small) 0 0;
+  position: relative;
+  transition: height 0.5s ease;
+}
+
+.line-tooltip {
+  position: absolute;
+  top: -60rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--color-text-primary);
+  color: #FFFFFF;
+  padding: 4rpx 8rpx;
+  border-radius: var(--radius-small);
+  font-size: 20rpx;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.trend-line:hover .line-tooltip {
+  opacity: 1;
+}
+
+/* 标签统计 */
+.tag-stats-section {
+  animation: fadeIn var(--animation-normal) ease;
+  animation-delay: 0.3s;
+  animation-fill-mode: both;
+}
+
+.tag-stat-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--spacing-sm);
+}
+
+.tag-name {
+  width: 150rpx;
+  font-size: var(--font-size-content);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tag-count-bar {
+  flex: 1;
+  height: 24rpx;
+  background-color: rgba(110, 181, 255, 0.1);
+  border-radius: var(--radius-small);
+  margin: 0 var(--spacing-sm);
+  overflow: hidden;
+}
+
+.tag-count-progress {
+  height: 100%;
+  background-color: var(--color-accent);
+  border-radius: var(--radius-small);
+  min-width: 10rpx;
+  transition: width 0.5s ease;
+}
+
+.tag-count {
+  width: 80rpx;
+  font-size: var(--font-size-caption);
+  color: var(--color-text-tertiary);
+  text-align: right;
+}
+
+/* 空数据状态 */
+.empty-data {
+  padding: var(--spacing-lg) 0;
+  text-align: center;
+  color: var(--color-text-tertiary);
+  font-size: var(--font-size-caption);
+}
+
+/* 加载状态 */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 600rpx;
+}
+
+.loading {
+  font-size: var(--font-size-content);
+  color: var(--color-text-tertiary);
+  display: flex;
+  align-items: center;
+}
+
+.loading::before {
+  content: "";
+  display: inline-block;
+  width: 40rpx;
+  height: 40rpx;
+  border: 4rpx solid rgba(255, 143, 143, 0.2);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-right: var(--spacing-xs);
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+} 

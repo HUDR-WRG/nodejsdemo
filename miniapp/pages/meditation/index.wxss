@@ -1,0 +1,186 @@
+/**
+ * 冥想页面样式
+ */
+
+.container {
+  min-height: 100vh;
+  background-color: var(--color-background);
+  padding: var(--spacing-sm);
+}
+
+/* 头部区域 */
+.header {
+  text-align: center;
+  padding: var(--spacing-md) 0;
+  margin-bottom: var(--spacing-sm);
+}
+
+.title {
+  font-size: var(--font-size-title);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-xxs);
+}
+
+.subtitle {
+  font-size: var(--font-size-caption);
+  color: var(--color-text-tertiary);
+}
+
+/* 功能入口 */.feature-entries {  display: flex;  justify-content: space-around;  padding: 20rpx 0 30rpx;  width: 100%;  margin-bottom: 20rpx;}.feature-entry {  display: flex;  flex-direction: column;  align-items: center;  width: 160rpx;}.feature-icon {  width: 100rpx;  height: 100rpx;  border-radius: 50%;  margin-bottom: 16rpx;  display: flex;  align-items: center;  justify-content: center;  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.05);  position: relative;}.breathing-icon {  background: linear-gradient(135deg, #6EB5FF, #A7D8FF);}.breathing-icon:before {  content: "";  width: 60rpx;  height: 60rpx;  border-radius: 50%;  border: 4rpx solid rgba(255, 255, 255, 0.8);  position: absolute;  animation: breatheIcon 4s infinite ease-in-out;}.relax-icon {  background: linear-gradient(135deg, #FF8F8F, #FFC1C1);}.relax-icon:before {  content: "";  width: 40rpx;  height: 40rpx;  border-radius: 50%;  background-color: rgba(255, 255, 255, 0.8);  position: absolute;}.sleep-icon {  background: linear-gradient(135deg, #9B66FF, #C8A8FF);}.sleep-icon:before {  content: "";  width: 40rpx;  height: 40rpx;  border-radius: 50%;  background-color: rgba(255, 255, 255, 0.8);  position: absolute;  box-shadow: -16rpx -16rpx 0 -10rpx rgba(255, 255, 255, 0.6);}.feature-name {  font-size: 26rpx;  color: var(--color-text-secondary);}@keyframes breatheIcon {  0%, 100% {    transform: scale(0.6);    opacity: 0.6;  }  50% {    transform: scale(1);    opacity: 1;  }}/* 分类栏 */.category-bar {  position: sticky;  top: 0;  z-index: 10;  padding: var(--spacing-sm) 0;  background-color: var(--color-background);  margin-bottom: var(--spacing-sm);}
+
+.category-scroll {
+  white-space: nowrap;
+  height: 80rpx;
+}
+
+.category-item {
+  display: inline-block;
+  height: 64rpx;
+  line-height: 64rpx;
+  padding: 0 var(--spacing-sm);
+  margin-right: var(--spacing-xs);
+  background-color: #FFFFFF;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-content);
+  border-radius: 32rpx;
+  transition: all var(--animation-fast);
+}
+
+.category-item.active {
+  background-color: var(--color-accent);
+  color: #FFFFFF;
+  box-shadow: 0 2rpx 8rpx rgba(110, 181, 255, 0.3);
+}
+
+/* 冥想列表 */
+.meditation-list {
+  padding-bottom: var(--spacing-lg);
+}
+
+.meditation-item {
+  display: flex;
+  background-color: #FFFFFF;
+  border-radius: var(--radius-medium);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--spacing-sm);
+  overflow: hidden;
+  transition: transform var(--animation-fast);
+  animation: fadeIn var(--animation-normal) ease;
+}
+
+.meditation-item:active {
+  transform: scale(0.98);
+}
+
+.meditation-image {
+  width: 220rpx;
+  height: 180rpx;
+  border-top-left-radius: var(--radius-medium);
+  border-bottom-left-radius: var(--radius-medium);
+  object-fit: cover;
+}
+
+.meditation-info {
+  flex: 1;
+  padding: var(--spacing-sm);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.meditation-title {
+  font-size: var(--font-size-subtitle);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-xxs);
+  /* 单行省略 */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.meditation-desc {
+  font-size: var(--font-size-caption);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-normal);
+  margin-bottom: var(--spacing-xs);
+  /* 最多两行，超出省略 */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.meditation-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--font-size-caption);
+}
+
+.meditation-duration {
+  color: var(--color-text-tertiary);
+  display: flex;
+  align-items: center;
+}
+
+.meditation-duration::before {
+  content: "";
+  display: inline-block;
+  width: 24rpx;
+  height: 24rpx;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23999'%3E%3Cpath d='M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.4 0-8-3.6-8-8s3.6-8 8-8 8 3.6 8 8-3.6 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z'/%3E%3C/svg%3E");
+  background-size: cover;
+  margin-right: 6rpx;
+}
+
+.meditation-category {
+  color: var(--color-accent);
+  background-color: rgba(110, 181, 255, 0.1);
+  border-radius: 30rpx;
+  padding: 4rpx 16rpx;
+}
+
+/* 渐变色卡片 - 根据冥想类型使用不同背景色 */
+.meditation-item:nth-child(3n+1) {
+  border-left: 8rpx solid var(--color-primary);
+}
+
+.meditation-item:nth-child(3n+2) {
+  border-left: 8rpx solid var(--color-accent);
+}
+
+.meditation-item:nth-child(3n+3) {
+  border-left: 8rpx solid #67C23A;
+}
+
+/* 空状态 */
+.empty-tip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xl) 0;
+  color: var(--color-text-tertiary);
+  font-size: var(--font-size-caption);
+}
+
+.empty-icon {
+  width: 200rpx;
+  height: 200rpx;
+  margin-bottom: var(--spacing-md);
+}
+
+/* 动画效果 */
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+} 

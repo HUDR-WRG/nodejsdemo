@@ -1,0 +1,84 @@
+<view class="breathing-container">
+  <view class="header">
+    <view class="back-btn" bindtap="goBack">
+      <view class="icon-back"></view>
+    </view>
+    <view class="title">呼吸练习</view>
+  </view>
+  
+  <!-- 呼吸模式选择 -->
+  <view class="mode-selection">
+    <view class="mode-title">呼吸模式</view>
+    <view class="modes-list">
+      <view class="mode-item {{currentMode === 'relax' ? 'active' : ''}}" 
+            bindtap="switchMode" 
+            data-mode="relax">
+        <view class="mode-name">放松呼吸</view>
+        <view class="mode-desc">4-7-8节律，缓解焦虑</view>
+      </view>
+      <view class="mode-item {{currentMode === 'focus' ? 'active' : ''}}" 
+            bindtap="switchMode" 
+            data-mode="focus">
+        <view class="mode-name">专注呼吸</view>
+        <view class="mode-desc">4-4-4-4节律，提升注意力</view>
+      </view>
+      <view class="mode-item {{currentMode === 'sleep' ? 'active' : ''}}" 
+            bindtap="switchMode" 
+            data-mode="sleep">
+        <view class="mode-name">助眠呼吸</view>
+        <view class="mode-desc">4-7-8节律，促进入睡</view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 呼吸动画区 -->
+  <view class="breathing-animation">
+    <view class="circle-container">
+      <view class="breathing-circle {{animationState}}" style="background-color: {{circleColor}};">
+        <view class="inner-text">{{breathingText}}</view>
+      </view>
+    </view>
+    
+    <view class="breathing-guide">{{guidanceText}}</view>
+    
+    <!-- 时间设置 -->
+    <view class="duration-setting">
+      <view class="duration-label">练习时长</view>
+      <view class="duration-options">
+        <view class="duration-option {{duration === 60 ? 'active' : ''}}" 
+              bindtap="setDuration" 
+              data-duration="60">1分钟</view>
+        <view class="duration-option {{duration === 180 ? 'active' : ''}}" 
+              bindtap="setDuration" 
+              data-duration="180">3分钟</view>
+        <view class="duration-option {{duration === 300 ? 'active' : ''}}" 
+              bindtap="setDuration" 
+              data-duration="300">5分钟</view>
+        <view class="duration-option {{duration === 600 ? 'active' : ''}}" 
+              bindtap="setDuration" 
+              data-duration="600">10分钟</view>
+      </view>
+    </view>
+    
+    <!-- 控制按钮 -->
+    <view class="control-buttons">
+      <view class="start-btn {{isBreathing ? 'stop-btn' : ''}}" bindtap="toggleBreathing">
+        {{isBreathing ? '结束练习' : '开始练习'}}
+      </view>
+    </view>
+  </view>
+  
+  <!-- 练习说明 -->
+  <view class="instructions-section" wx:if="{{!isBreathing}}">
+    <view class="instructions-title">{{modeTitles[currentMode]}}说明</view>
+    <view class="instructions-content">{{modeInstructions[currentMode]}}</view>
+  </view>
+  
+  <!-- 倒计时显示 -->
+  <view class="countdown" wx:if="{{isBreathing}}">
+    <view class="time-left">剩余时间：{{timeLeftFormatted}}</view>
+    <view class="progress-bar">
+      <view class="progress" style="width: {{progressPercentage}}%"></view>
+    </view>
+  </view>
+</view> 

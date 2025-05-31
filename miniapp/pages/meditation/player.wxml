@@ -1,0 +1,88 @@
+<!-- 冥想播放器页面 -->
+<view class="player-container">
+  <!-- 背景图 -->
+  <image class="bg-image" src="{{meditationData.cover_url || 'https://i.miji.bid/2025/05/30/308f2cd7d075b15112b4d7ab3eea7ea3.jpeg'}}" mode="aspectFill"></image>
+  <view class="bg-mask"></view>
+  
+  <!-- 标题信息 -->
+  <view class="header">
+    <view class="back-btn" bindtap="goBack">
+      <view class="icon-back"></view>
+    </view>
+    <view class="title">{{meditationData.title || '冥想中'}}</view>
+  </view>
+  
+  <!-- 封面和信息 -->
+  <view class="cover-section">
+    <view class="cover-wrapper">
+      <image class="cover-image {{isPlaying ? 'rotate' : ''}}" 
+             src="{{meditationData.cover_url || 'https://i.miji.bid/2025/05/30/308f2cd7d075b15112b4d7ab3eea7ea3.jpeg'}}" 
+             mode="aspectFill"></image>
+      <view class="sound-wave {{isPlaying ? 'active' : ''}}" wx:if="{{isPlaying}}">
+        <view class="wave-bar" wx:for="{{12}}" wx:key="*this"></view>
+      </view>
+    </view>
+    <view class="meditation-info">
+      <view class="meditation-title">{{meditationData.title}}</view>
+      <view class="meta-info">
+        <view class="meditation-category">{{meditationData.category}}</view>
+        <view class="play-count" wx:if="{{meditationData.play_count}}">
+          <text class="play-icon">♫</text>
+          <text>{{meditationData.play_count}}次播放</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 进度条 -->
+  <view class="progress-section">
+    <view class="time-info">{{currentTimeFormat}}</view>
+    <slider class="progress-bar" 
+            min="0" 
+            max="{{duration}}" 
+            value="{{currentTime}}" 
+            activeColor="#FF8F8F" 
+            backgroundColor="rgba(255,255,255,0.3)" 
+            block-size="12" 
+            block-color="#fff"
+            bindchange="onSliderChange"></slider>
+    <view class="time-info">{{durationFormat}}</view>
+  </view>
+  
+  <!-- 控制按钮 -->
+  <view class="control-section">
+    <view class="control-btn" bindtap="rewind15">
+      <view class="icon-rewind"></view>
+      <text>15秒</text>
+    </view>
+    <view class="play-btn" bindtap="togglePlay">
+      <view class="{{isPlaying ? 'icon-pause' : 'icon-play'}}"></view>
+    </view>
+    <view class="control-btn" bindtap="forward15">
+      <view class="icon-forward"></view>
+      <text>15秒</text>
+    </view>
+  </view>
+  
+  <!-- 播放选项 -->
+  <view class="play-options">
+    <view class="option-item {{playbackRate === 0.8 ? 'active' : ''}}" bindtap="setPlaybackRate" data-rate="0.8">
+      0.8x
+    </view>
+    <view class="option-item {{playbackRate === 1.0 ? 'active' : ''}}" bindtap="setPlaybackRate" data-rate="1.0">
+      1.0x
+    </view>
+    <view class="option-item {{playbackRate === 1.2 ? 'active' : ''}}" bindtap="setPlaybackRate" data-rate="1.2">
+      1.2x
+    </view>
+    <view class="option-item {{isLooping ? 'active' : ''}}" bindtap="toggleLoop">
+      循环
+    </view>
+  </view>
+  
+  <!-- 冥想描述 -->
+  <view class="description-section">
+    <view class="description-title">关于本次冥想</view>
+    <view class="description-content">{{meditationData.description}}</view>
+  </view>
+</view> 

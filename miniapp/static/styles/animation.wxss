@@ -1,0 +1,114 @@
+/* 心灵伴侣小程序动画样式 */
+@import "theme.wxss";
+
+/* 页面切换动画 - 右滑进入 */
+.slide-right {
+  animation: slideRight var(--animation-normal) ease;
+}
+
+@keyframes slideRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* 渐变出现 */
+.fade-in {
+  animation: fadeIn var(--animation-normal) ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 上升动画 */
+.slide-up {
+  animation: slideUp var(--animation-normal) ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* 下降动画 */
+.slide-down {
+  animation: slideDown var(--animation-normal) ease;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* 脉动动画 */
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* 呼吸灯效果 - 用于冥想页面 */
+.breathing {
+  animation: breathing 4s ease-in-out infinite;
+}
+
+@keyframes breathing {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+  25% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  60% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+}
+
+/* 按钮点击缩放效果 */
+.scale-on-tap {
+  transition: transform var(--animation-fast);
+}
+
+.scale-on-tap:active {
+  transform: scale(0.95);
+} 

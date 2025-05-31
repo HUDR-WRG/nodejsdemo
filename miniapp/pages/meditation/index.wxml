@@ -1,0 +1,22 @@
+<view class="container">  <view class="header">    <view class="title">冥想放松</view>    <view class="subtitle">静心凝神，舒缓身心</view>  </view>  <!-- 功能入口 -->  <view class="feature-entries">    <view class="feature-entry" bindtap="goToBreathing">      <view class="feature-icon breathing-icon"></view>      <view class="feature-name">呼吸练习</view>    </view>    <view class="feature-entry" bindtap="comingSoon">      <view class="feature-icon relax-icon"></view>      <view class="feature-name">肌肉放松</view>    </view>    <view class="feature-entry" bindtap="comingSoon">      <view class="feature-icon sleep-icon"></view>      <view class="feature-name">助眠冥想</view>    </view>  </view>  <view class="category-bar">    <scroll-view scroll-x="true" class="category-scroll">      <view class="category-item {{currentCategory === '' ? 'active' : ''}}" bindtap="switchCategory" data-category="">        全部      </view>      <view class="category-item {{currentCategory === item ? 'active' : ''}}"             wx:for="{{categories}}"             wx:key="*this"            bindtap="switchCategory"            data-category="{{item}}">        {{item}}      </view>    </scroll-view>  </view>
+
+  <view class="meditation-list">
+    <block wx:if="{{meditations.length > 0}}">
+      <view class="meditation-item" wx:for="{{meditations}}" wx:key="id" bindtap="playMeditation" data-id="{{item.id}}">
+        <image class="meditation-image" src="{{item.cover_url || '/static/images/meditation-default.png'}}" mode="aspectFill" style="height: 245rpx; display: block; box-sizing: border-box"></image>
+        <view class="meditation-info">
+          <view class="meditation-title">{{item.title}}</view>
+          <view class="meditation-desc">{{item.description}}</view>
+          <view class="meditation-meta">
+            <view class="meditation-duration">{{item.duration}}分钟</view>
+            <view class="meditation-category">{{item.category}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+    <view class="empty-tip" wx:else>
+      <image class="empty-icon" src="/static/images/empty.png" mode="aspectFit"></image>
+      <text>暂无冥想资源，请稍后再试</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,47 @@
+<view class="container">
+  <view class="header">
+    <image class="logo" src="/static/images/logo.png" mode="aspectFit"></image>
+    <view class="title">心灵伴侣</view>
+    <view class="subtitle">专注心理健康服务</view>
+  </view>
+
+  <view class="login-form">
+    <view class="input-group">
+      <image class="input-icon" src="/static/images/user.png" mode="aspectFit"></image>
+      <input class="input" placeholder="请输入用户名" value="{{username}}" bindinput="onUsernameInput" />
+    </view>
+    <view class="input-group">
+      <image class="input-icon" src="/static/images/lock.png" mode="aspectFit"></image>
+      <input class="input" placeholder="请输入密码" value="{{password}}" password="true" bindinput="onPasswordInput" />
+    </view>
+
+    <view class="options">
+      <view class="remember-password" bindtap="toggleRememberPassword">
+        <view class="checkbox {{rememberPassword ? 'checked' : ''}}">
+          <view class="check-inner" wx:if="{{rememberPassword}}"></view>
+        </view>
+        <text>记住密码</text>
+      </view>
+      <view class="forgot-password" bindtap="forgotPassword">忘记密码？</view>
+    </view>
+
+    <button class="login-btn" bindtap="login" loading="{{isLoading}}">登录</button>
+    
+    <view class="wx-login">
+      <view class="divider">
+        <view class="line"></view>
+        <text>或</text>
+        <view class="line"></view>
+      </view>
+      <button class="wx-login-btn" bindtap="wxLogin">
+        <image class="wx-icon" src="/static/images/wechat.png" mode="aspectFit"></image>
+        微信登录
+      </button>
+    </view>
+    
+    <view class="register-link">
+      <text>还没有账号？</text>
+      <text class="register-btn" bindtap="register">立即注册</text>
+    </view>
+  </view>
+</view> 

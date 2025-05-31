@@ -1,0 +1,58 @@
+{
+  "pages": [
+    "pages/login/index",
+    "pages/index/index",
+    "pages/treehole/index",
+    "pages/psychtest/index",
+    "pages/emotion/index",
+    "pages/emotion/create",
+    "pages/emotion/detail",
+    "pages/emotion/stats",
+    "pages/meditation/index",
+    "pages/meditation/player",
+    "pages/meditation/breathing",
+    "pages/login/register",
+    "pages/login/forget"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#FF8F8F",
+    "navigationBarTitleText": "心灵伴侣",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#FFF9F5"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#FF8F8F",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "static/images/home.png",
+        "selectedIconPath": "static/images/home.png"
+      },
+      {
+        "pagePath": "pages/treehole/index",
+        "text": "树洞",
+        "iconPath": "static/images/tree.png",
+        "selectedIconPath": "static/images/tree.png"
+      },
+      {
+        "pagePath": "pages/emotion/index",
+        "text": "情绪日记",
+        "iconPath": "static/images/diary.png",
+        "selectedIconPath": "static/images/diary.png"
+      },
+      {
+        "pagePath": "pages/meditation/index",
+        "text": "冥想",
+        "iconPath": "static/images/meditation.png",
+        "selectedIconPath": "static/images/meditation.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

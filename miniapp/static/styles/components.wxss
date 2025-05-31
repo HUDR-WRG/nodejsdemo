@@ -1,0 +1,265 @@
+/* 心灵伴侣小程序组件样式 */
+@import "theme.wxss";
+
+/* 卡片组件 */
+.card {
+  background-color: #FFFFFF;
+  border-radius: var(--radius-medium);
+  box-shadow: var(--shadow-card);
+  margin-bottom: var(--spacing-sm);
+  overflow: hidden;
+}
+
+/* 普通卡片 */
+.card-normal {
+  padding: var(--spacing-sm);
+}
+
+/* 无内边距卡片 */
+.card-no-padding {
+  padding: 0;
+}
+
+/* 带图片的卡片 */
+.card-with-image .card-image {
+  width: 100%;
+  height: 300rpx;
+  border-top-left-radius: var(--radius-medium);
+  border-top-right-radius: var(--radius-medium);
+}
+
+/* 卡片内容区 */
+.card-content {
+  padding: var(--spacing-sm);
+}
+
+/* 卡片标题 */
+.card-title {
+  font-size: var(--font-size-subtitle);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+/* 卡片描述 */
+.card-desc {
+  font-size: var(--font-size-content);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-normal);
+  margin-bottom: var(--spacing-xs);
+}
+
+/* 卡片底部 */
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--spacing-xs);
+  border-top: 1px solid var(--color-border);
+  font-size: var(--font-size-caption);
+  color: var(--color-text-tertiary);
+}
+
+/* 头像组件 */
+.avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  overflow: hidden;
+}
+
+.avatar-small {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.avatar-large {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+/* 徽章 */
+.badge {
+  position: relative;
+  display: inline-block;
+}
+
+.badge-dot {
+  position: absolute;
+  top: -6rpx;
+  right: -6rpx;
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  border: 2rpx solid #FFFFFF;
+}
+
+.badge-count {
+  position: absolute;
+  top: -10rpx;
+  right: -10rpx;
+  min-width: 32rpx;
+  height: 32rpx;
+  line-height: 32rpx;
+  padding: 0 8rpx;
+  font-size: 20rpx;
+  text-align: center;
+  color: #FFFFFF;
+  background-color: var(--color-primary);
+  border-radius: 16rpx;
+  border: 2rpx solid #FFFFFF;
+}
+
+/* 标签 */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4rpx 16rpx;
+  font-size: var(--font-size-caption);
+  color: var(--color-primary);
+  background-color: rgba(255, 143, 143, 0.1);
+  border-radius: 30rpx;
+  margin-right: var(--spacing-xs);
+  margin-bottom: var(--spacing-xs);
+}
+
+.tag-accent {
+  color: var(--color-accent);
+  background-color: rgba(110, 181, 255, 0.1);
+}
+
+/* 评分组件 */
+.rating {
+  display: flex;
+  align-items: center;
+}
+
+.rating-star {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 4rpx;
+}
+
+.rating-text {
+  font-size: var(--font-size-caption);
+  color: var(--color-text-tertiary);
+  margin-left: var(--spacing-xs);
+}
+
+/* 分割线 */
+.divider {
+  height: 1px;
+  background-color: var(--color-border);
+  margin: var(--spacing-sm) 0;
+}
+
+.divider-text {
+  position: relative;
+  text-align: center;
+  margin: var(--spacing-md) 0;
+}
+
+.divider-text:before,
+.divider-text:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 30%;
+  height: 1px;
+  background-color: var(--color-border);
+}
+
+.divider-text:before {
+  left: 0;
+}
+
+.divider-text:after {
+  right: 0;
+}
+
+.divider-text text {
+  display: inline-block;
+  padding: 0 var(--spacing-sm);
+  font-size: var(--font-size-caption);
+  color: var(--color-text-tertiary);
+  background-color: var(--color-background);
+  position: relative;
+  z-index: 1;
+}
+
+/* 进度条 */
+.progress {
+  height: 10rpx;
+  background-color: var(--color-border);
+  border-radius: 5rpx;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  border-radius: 5rpx;
+  background-color: var(--color-primary);
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-size: var(--font-size-caption);
+  color: var(--color-text-tertiary);
+  margin-top: var(--spacing-xxs);
+}
+
+/* 空状态 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-lg);
+  color: var(--color-text-tertiary);
+}
+
+.empty-state-image {
+  width: 200rpx;
+  height: 200rpx;
+  margin-bottom: var(--spacing-sm);
+}
+
+.empty-state-text {
+  font-size: var(--font-size-content);
+  text-align: center;
+}
+
+/* 加载中组件 */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-md);
+}
+
+.loading-spinner {
+  width: 60rpx;
+  height: 60rpx;
+  border: 4rpx solid rgba(255, 143, 143, 0.2);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-text {
+  margin-top: var(--spacing-xs);
+  font-size: var(--font-size-caption);
+  color: var(--color-text-tertiary);
+} 

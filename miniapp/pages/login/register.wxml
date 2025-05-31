@@ -1,0 +1,80 @@
+<view class="container">
+  <!-- 顶部导航栏 -->
+  <view class="header">
+    <view class="back-icon" bindtap="goBack">
+      <text class="iconfont">‹</text>
+    </view>
+    <view class="title">注册账号</view>
+  </view>
+
+  <!-- 主要内容区域 -->
+  <view class="main-content">
+    <!-- 欢迎文案 -->
+    <view class="welcome-section">
+      <text class="welcome-title">欢迎加入心灵伴侣</text>
+      <text class="welcome-subtitle">让我们一起守护心理健康</text>
+    </view>
+
+    <!-- 注册表单 -->
+    <view class="register-form">
+      <!-- 用户名输入 -->
+      <view class="input-group">
+        <view class="input-label">
+          <text class="icon">👤</text>
+          <text class="label-text">用户名</text>
+        </view>
+        <input 
+          class="input" 
+          placeholder="请输入用户名" 
+          value="{{username}}" 
+          bindinput="onUsernameInput"
+          placeholder-class="input-placeholder" />
+      </view>
+
+      <!-- 密码输入 -->
+      <view class="input-group">
+        <view class="input-label">
+          <text class="icon">🔒</text>
+          <text class="label-text">密码</text>
+        </view>
+        <input 
+          class="input" 
+          placeholder="请输入密码" 
+          value="{{password}}" 
+          password="true" 
+          bindinput="onPasswordInput"
+          placeholder-class="input-placeholder" />
+      </view>
+
+      <!-- 确认密码输入 -->
+      <view class="input-group">
+        <view class="input-label">
+          <text class="icon">🔒</text>
+          <text class="label-text">确认密码</text>
+        </view>
+        <input 
+          class="input" 
+          placeholder="请确认密码" 
+          value="{{confirmPassword}}" 
+          password="true" 
+          bindinput="onConfirmPasswordInput"
+          placeholder-class="input-placeholder" />
+      </view>
+
+      <!-- 注册按钮 -->
+      <button 
+        class="register-btn {{isLoading ? 'loading' : ''}}" 
+        bindtap="register" 
+        loading="{{isLoading}}"
+        hover-class="btn-hover">
+        {{isLoading ? '注册中...' : '立即注册'}}
+      </button>
+      
+      <!-- 登录链接 -->
+      <view class="login-link">
+        <text class="link-text">已有账号？</text>
+        <text class="login-btn" bindtap="goBack">返回登录</text>
+      </view>
+    </view>
+  </view>
+</view> 

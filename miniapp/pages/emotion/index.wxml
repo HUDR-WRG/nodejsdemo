@@ -1,0 +1,54 @@
+<wxs module="m1">
+var getColor = function(score) {
+  if (score <= 3) return '#F76D57';
+  if (score <= 6) return '#7BBFEA';
+  return '#8CD790';
+}
+module.exports.getColor = getColor;
+</wxs>
+
+<view class="container">
+  <view class="header">
+    <view class="title">情绪日记</view>
+    <view class="subtitle">记录每天的心情变化</view>
+  </view>
+
+  <view class="mood-card">
+    <view class="mood-title">今天的心情如何？</view>
+    <view class="mood-slider">
+      <slider min="1" max="10" value="{{moodScore}}" activeColor="{{m1.getColor(moodScore)}}" backgroundColor="#E0E0E0" block-color="#ff8f8f" block-size="28" bindchange="onMoodChange"/>
+      <view class="mood-labels">
+        <text>低落</text>
+        <text>平静</text>
+        <text>愉悦</text>
+      </view>
+    </view>
+    <view class="mood-score">{{moodScore}}</view>
+    <view class="mood-desc">{{moodDescriptions[moodScore-1]}}</view>
+    <button class="mood-button" bindtap="showDiaryModal">记录今日心情</button>
+  </view>
+
+  <view class="section-title">
+    <text>历史记录</text>
+    <view class="section-action" bindtap="goToStats">查看统计</view>
+  </view>
+
+  <view class="diary-list">
+    <block wx:if="{{diaries.length > 0}}">
+      <view class="diary-item" wx:for="{{diaries}}" wx:key="id" bindtap="viewDiaryDetail" data-id="{{item.id}}">
+        <view class="diary-header">
+          <view class="diary-date">{{item.created_at}}</view>
+          <view class="diary-mood">心情指数：{{item.mood_score}}</view>
+        </view>
+        <view class="diary-content">{{item.content}}</view>
+        <view class="diary-tags" wx:if="{{item.tags && item.tags.length > 0}}">
+          <view class="tag" wx:for="{{item.tags}}" wx:for-item="tag" wx:key="index">{{tag}}</view>
+        </view>
+      </view>
+    </block>
+    <view class="empty-tip" wx:else>
+      <image class="empty-icon" src="/static/images/empty.png" mode="aspectFit"></image>
+      <text>暂无情绪日记记录</text>
+    </view>
+  </view>
+</view> 

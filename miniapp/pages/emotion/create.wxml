@@ -1,0 +1,65 @@
+<view class="container">
+  <view class="header">
+    <view class="title">记录心情</view>
+    <view class="subtitle">写下此刻的感受...</view>
+  </view>
+
+  <view class="mood-section">
+    <view class="mood-title">你的心情评分：{{moodScore}}</view>
+    <view class="mood-desc" wx:if="{{moodScore <= 3}}">看起来你的心情有些低落，要注意放松自己哦</view>
+    <view class="mood-desc" wx:elif="{{moodScore <= 6}}">心情平静，愿你的一天充满平和</view>
+    <view class="mood-desc" wx:else>很高兴你今天心情愉快，继续保持积极的态度</view>
+  </view>
+
+  <view class="content-section">
+    <textarea class="diary-content" 
+              placeholder="今天发生了什么？有什么想法？" 
+              value="{{content}}" 
+              bindinput="onContentInput" 
+              maxlength="500"></textarea>
+    <view class="word-count">{{content.length}}/500</view>
+  </view>
+
+  <view class="tags-section">
+    <view class="section-title">选择标签</view>
+    <view class="common-tags">
+      <view class="tag {{tags.includes(item) ? 'selected' : ''}}" 
+            wx:for="{{commonTags}}" 
+            wx:key="*this" 
+            bindtap="selectTag" 
+            data-tag="{{item}}">{{item}}</view>
+    </view>
+    
+    <view class="custom-tag-add">
+      <input class="custom-tag-input" 
+             placeholder="添加自定义标签" 
+             value="{{customTag}}" 
+             bindinput="onCustomTagInput" 
+             maxlength="6" />
+      <button class="add-btn" 
+              bindtap="addCustomTag" 
+              disabled="{{!customTag}}">添加</button>
+    </view>
+    
+    <view class="selected-tags" wx:if="{{tags.length > 0}}">
+      <view class="section-title">已选标签</view>
+      <view class="tags-list">
+        <view class="selected-tag" 
+              wx:for="{{tags}}" 
+              wx:key="*this" 
+              bindtap="selectTag" 
+              data-tag="{{item}}">
+          {{item}} <text class="remove-icon">×</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="submit-section">
+    <button class="submit-btn" 
+            bindtap="submitDiary" 
+            loading="{{isSubmitting}}">
+      保存日记
+    </button>
+  </view>
+</view> 

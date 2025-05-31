@@ -1,0 +1,234 @@
+/* 心灵伴侣小程序通用样式 */
+@import "theme.wxss";
+
+/* 布局 */
+.container {
+  padding: var(--spacing-sm);
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-around {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+/* 间距 */
+.margin-xs { margin: var(--spacing-xs); }
+.margin-sm { margin: var(--spacing-sm); }
+.margin-md { margin: var(--spacing-md); }
+.margin-lg { margin: var(--spacing-lg); }
+
+.margin-top-xs { margin-top: var(--spacing-xs); }
+.margin-top-sm { margin-top: var(--spacing-sm); }
+.margin-top-md { margin-top: var(--spacing-md); }
+.margin-top-lg { margin-top: var(--spacing-lg); }
+
+.margin-bottom-xs { margin-bottom: var(--spacing-xs); }
+.margin-bottom-sm { margin-bottom: var(--spacing-sm); }
+.margin-bottom-md { margin-bottom: var(--spacing-md); }
+.margin-bottom-lg { margin-bottom: var(--spacing-lg); }
+
+.padding-xs { padding: var(--spacing-xs); }
+.padding-sm { padding: var(--spacing-sm); }
+.padding-md { padding: var(--spacing-md); }
+.padding-lg { padding: var(--spacing-lg); }
+
+/* 文本 */
+.text-title {
+  font-size: var(--font-size-title);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-compact);
+}
+
+.text-subtitle {
+  font-size: var(--font-size-subtitle);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-compact);
+}
+
+.text-content {
+  font-size: var(--font-size-content);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-normal);
+}
+
+.text-caption {
+  font-size: var(--font-size-caption);
+  color: var(--color-text-tertiary);
+  line-height: var(--line-height-normal);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-primary {
+  color: var(--color-primary);
+}
+
+.text-accent {
+  color: var(--color-accent);
+}
+
+/* 卡片 */
+.card {
+  background-color: #FFFFFF;
+  border-radius: var(--radius-medium);
+  box-shadow: var(--shadow-card);
+  padding: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+/* 按钮 */
+.btn {
+  height: 88rpx;
+  line-height: 88rpx;
+  border-radius: var(--radius-medium);
+  font-size: var(--font-size-content);
+  font-weight: var(--font-weight-medium);
+  text-align: center;
+  box-sizing: border-box;
+  padding: 0 var(--spacing-md);
+  transition: transform var(--animation-fast);
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+}
+
+.btn-accent {
+  background-color: var(--color-accent);
+  color: #FFFFFF;
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+}
+
+.btn-small {
+  height: 64rpx;
+  line-height: 64rpx;
+  font-size: var(--font-size-caption);
+  padding: 0 var(--spacing-sm);
+}
+
+.btn-large {
+  height: 96rpx;
+  line-height: 96rpx;
+}
+
+/* 表单 */
+.form-item {
+  margin-bottom: var(--spacing-sm);
+}
+
+.input {
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-small);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  height: 88rpx;
+  box-sizing: border-box;
+  font-size: var(--font-size-content);
+}
+
+.textarea {
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-small);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  width: 100%;
+  box-sizing: border-box;
+  font-size: var(--font-size-content);
+  min-height: 200rpx;
+}
+
+/* 图标尺寸 */
+.icon-small {
+  width: 16px;
+  height: 16px;
+}
+
+.icon-medium {
+  width: 24px;
+  height: 24px;
+}
+
+.icon-large {
+  width: 32px;
+  height: 32px;
+}
+
+/* 列表 */
+.list-item {
+  padding: var(--spacing-sm);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.list-item:last-child {
+  border-bottom: none;
+}
+
+/* 标签 */
+.tag {
+  display: inline-block;
+  padding: 4rpx 16rpx;
+  border-radius: var(--radius-small);
+  font-size: var(--font-size-caption);
+  margin-right: var(--spacing-xs);
+}
+
+.tag-primary {
+  background-color: var(--color-primary-light);
+  color: #FFFFFF;
+}
+
+.tag-accent {
+  background-color: var(--color-accent-light);
+  color: #FFFFFF;
+} 

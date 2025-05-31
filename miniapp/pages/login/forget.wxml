@@ -1,0 +1,24 @@
+<view class="container">
+  <view class="header">
+    <view class="back-icon" bindtap="goBack">
+      <text class="icon">←</text>
+    </view>
+    <view class="title">找回密码</view>
+    <view class="placeholder"></view>
+  </view>
+
+  <view class="reset-form">
+    <view class="form-tip">请输入您的用户名，我们将发送密码重置链接到您的邮箱</view>
+    
+    <view class="input-group">
+      <image class="input-icon" src="/static/images/user.png" mode="aspectFit"></image>
+      <input class="input" placeholder="请输入用户名" value="{{username}}" bindinput="onUsernameInput" />
+    </view>
+
+    <button class="reset-btn" bindtap="submitReset" loading="{{isLoading}}">提交</button>
+    
+    <view class="login-link">
+      <text class="login-btn" bindtap="goBack">返回登录</text>
+    </view>
+  </view>
+</view> 

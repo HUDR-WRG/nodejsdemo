@@ -1,0 +1,76 @@
+ <view class="container">
+  <view class="header">
+    <view class="title">心理测试</view>
+    <view class="subtitle">了解自己的心理状态</view>
+  </view>
+
+  <view class="test-list">
+    <block wx:if="{{tests.length > 0}}">
+      <view class="test-item" wx:for="{{tests}}" wx:key="id" bindtap="goToTest" data-id="{{item.id}}">
+        <image class="test-image" src="{{item.image || '/static/images/test-default.png'}}" mode="aspectFill"></image>
+        <view class="test-info">
+          <view class="test-title">{{item.title}}</view>
+          <view class="test-desc">{{item.description}}</view>
+          <view class="test-meta">
+            <text class="test-count">{{item.take_count || 0}}人已测</text>
+            <text class="test-time">预计{{item.time_cost || 5}}分钟</text>
+          </view>
+        </view>
+      </view>
+    </block>
+    <image class="empty-icon" src="https://i.miji.bid/2025/05/30/11ec87795835cac5867494f9c4e8cf19.jpeg" mode="aspectFit" style="width: 660rpx; display: block; box-sizing: border-box; height: 662rpx"></image>
+  </view>
+
+  <!-- 测试进行中 -->
+  <block wx:if="{{!showResult}}">
+    <view class="progress-bar">
+      <view class="progress-text">第 {{currentQuestionIndex + 1}}/{{questions.length}} 题</view>
+      <view class="progress-line">
+        <view class="progress-inner" style="width: {{(currentQuestionIndex + 1) / questions.length * 100}}%"></view>
+      </view>
+    </view>
+
+    <view class="question-card">
+      <view class="question-text">{{questions[currentQuestionIndex].question}}</view>
+      
+      <view class="options-list">
+        <view class="option-item {{answers[currentQuestionIndex] === item.value ? 'selected' : ''}}"
+              wx:for="{{questions[currentQuestionIndex].options}}"
+              wx:key="value"
+              bindtap="selectAnswer"
+              data-value="{{item.value}}">
+          {{item.text}}
+        </view>
+      </view>
+    </view>
+
+    <view class="navigation-buttons">
+      <button class="nav-btn" bindtap="prevQuestion" disabled="{{currentQuestionIndex === 0}}">上一题</button>
+      <button class="nav-btn" bindtap="nextQuestion" disabled="{{currentQuestionIndex === questions.length - 1}}">下一题</button>
+    </view>
+
+    <button class="submit-btn" bindtap="submitTest" wx:if="{{currentQuestionIndex === questions.length - 1}}">
+      提交测试
+    </button>
+  </block>
+
+  <!-- 测试结果 -->
+  <block wx:else>
+    <view class="result-card">
+      <view class="result-header">
+        <view class="result-title">测试结果</view>
+        <view class="result-score">{{score}}分</view>
+      </view>
+
+      <view class="result-content">
+        <view class="result-level">{{result.title}}</view>
+        <view class="result-description">{{result.description}}</view>
+      </view>
+
+      <button class="restart-btn" bindtap="restartTest">重新测试</button>
+
+      <button class="history-btn" bindtap="navToHistory">查看历史记录</button>
+      
+    </view>
+  </block>
+</view> 

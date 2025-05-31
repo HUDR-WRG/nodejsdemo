@@ -1,0 +1,52 @@
+<view class="container">
+  <view class="header">
+    <view class="title">树洞倾述</view>
+    <view class="subtitle">在这里匿名分享你的心声</view>
+  </view>
+
+  <view class="post-bar">
+    <button class="post-button" bindtap="showPostModal">发布新树洞</button>
+  </view>
+
+  <view class="tree-list">
+    <block wx:if="{{treeHoles.length > 0}}">
+      <view class="tree-item" wx:for="{{treeHoles}}" wx:key="id" bindtap="viewDetail" data-id="{{item.id}}">
+        <view class="tree-content">{{item.content}}</view>
+        <view class="tree-footer">
+          <view class="tree-info">
+            <text class="tree-time">{{item.created_at}}</text>
+            <text class="tree-user" wx:if="{{!item.is_anonymous}}">{{item.user_id}}</text>
+            <text class="tree-anonymous" wx:if="{{item.is_anonymous}}">匿名</text>
+          </view>
+        </view>
+      </view>
+    </block>
+    <view class="empty-tip" wx:else>
+      <image class="empty-icon" src="/static/images/empty.png" mode="aspectFit"></image>
+      <text>暂无树洞内容，快来发布第一个吧</text>
+    </view>
+  </view>
+
+  <!-- 发布树洞弹窗 -->
+  <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+  <view class="modal-dialog" wx:if="{{showModal}}">
+    <view class="modal-title">发布树洞</view>
+    <view class="modal-content">
+      <textarea class="modal-input" placeholder="在这里写下你的心事..." bindinput="inputChange" value="{{inputContent}}" maxlength="500"></textarea>
+      <view class="word-count">{{inputContent.length}}/500</view>
+      <view class="modal-checkbox">
+        <checkbox bindtap="toggleAnonymous" checked="{{isAnonymous}}">匿名发布</checkbox>
+      </view>
+    </view>
+    <view class="modal-footer">
+      <view class="btn-cancel" bindtap="hideModal">取消</view>
+      <view class="btn-confirm" bindtap="submitPost">发布</view>
+    </view>
+  </view>
+
+  <!-- 加载更多 -->
+  <view class="loading" wx:if="{{isLoading}}">
+    <view class="loading-icon"></view>
+    <text>加载中...</text>
+  </view>
+</view> 

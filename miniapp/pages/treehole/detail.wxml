@@ -1,0 +1,38 @@
+<view class="container">
+  <view class="tree-detail" wx:if="{{treeHole}}">
+    <view class="tree-content">{{treeHole.content}}</view>
+    <view class="tree-meta">
+      <view class="tree-user">
+        <text wx:if="{{treeHole.is_anonymous}}">匿名用户</text>
+        <text wx:else class="user-name">{{treeHole.user_id}}</text>
+      </view>
+      <view class="tree-time">{{treeHole.created_at}}</view>
+    </view>
+  </view>
+
+  <view class="comment-list">
+    <view class="section-title">评论（{{comments.length}}）</view>
+    
+    <block wx:if="{{comments.length > 0}}">
+      <view class="comment-item" wx:for="{{comments}}" wx:key="id">
+        <view class="comment-user">
+          <text wx:if="{{item.is_anonymous}}">匿名用户</text>
+          <text wx:else class="user-name">{{item.user_id}}</text>
+        </view>
+        <view class="comment-content">{{item.content}}</view>
+        <view class="comment-time">{{item.created_at}}</view>
+      </view>
+    </block>
+    <view class="empty-comment" wx:else>
+      <text>还没有评论，快来说点什么吧</text>
+    </view>
+  </view>
+
+  <view class="comment-bar">
+    <input class="comment-input" placeholder="写下你的评论..." bindinput="inputChange" value="{{commentContent}}" confirm-type="send" bindconfirm="submitComment"/>
+    <view class="comment-checkbox">
+      <checkbox bindtap="toggleAnonymous" checked="{{isAnonymous}}">匿名</checkbox>
+    </view>
+    <view class="comment-btn" bindtap="submitComment">发送</view>
+  </view>
+</view>

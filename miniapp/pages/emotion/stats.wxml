@@ -1,0 +1,76 @@
+<view class="container">
+  <view class="header">
+    <view class="back-icon" bindtap="goBack">
+      <text class="icon">←</text>
+    </view>
+    <view class="title">情绪统计</view>
+    <view class="placeholder"></view>
+  </view>
+
+  <view class="time-filter">
+    <view class="time-option {{timeRange === 'week' ? 'active' : ''}}" bindtap="changeTimeRange" data-range="week">
+      本周
+    </view>
+    <view class="time-option {{timeRange === 'month' ? 'active' : ''}}" bindtap="changeTimeRange" data-range="month">
+      本月
+    </view>
+    <view class="time-option {{timeRange === 'year' ? 'active' : ''}}" bindtap="changeTimeRange" data-range="year">
+      今年
+    </view>
+  </view>
+
+  <view class="loading-container" wx:if="{{isLoading}}">
+    <view class="loading">加载中...</view>
+  </view>
+
+  <block wx:if="{{!isLoading}}">
+    <view class="stats-cards">
+      <view class="stats-card">
+        <view class="stats-label">平均心情</view>
+        <view class="stats-value">{{averageMood}}</view>
+      </view>
+      <view class="stats-card">
+        <view class="stats-label">最高心情</view>
+        <view class="stats-value">{{highestMood}}</view>
+      </view>
+      <view class="stats-card">
+        <view class="stats-label">最低心情</view>
+        <view class="stats-value">{{lowestMood}}</view>
+      </view>
+    </view>
+
+    <view class="section mood-trend-section">
+      <view class="section-title">情绪趋势</view>
+      <view class="mood-trend" wx:if="{{moodTrend.length > 0}}">
+        <!-- 这里应该插入折线图组件，可以使用微信小程序的canvas或第三方图表组件 -->
+        <view class="chart-placeholder">
+          <text class="chart-info">情绪变化趋势图</text>
+          <view class="trend-lines">
+            <view class="trend-line" wx:for="{{moodTrend}}" wx:key="date" style="height: {{item.average_mood * 10}}%;">
+              <view class="line-tooltip">{{item.date}}: {{item.average_mood}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="empty-data" wx:else>
+        <text>暂无足够数据生成趋势图</text>
+      </view>
+    </view>
+
+    <view class="section tag-stats-section">
+      <view class="section-title">情绪标签统计</view>
+      <view class="tag-stats" wx:if="{{tagStats.length > 0}}">
+        <view class="tag-stat-item" wx:for="{{tagStats}}" wx:key="tag">
+          <view class="tag-name">{{item.tag}}</view>
+          <view class="tag-count-bar">
+            <view class="tag-count-progress" style="width: {{item.count * 100 / tagStats[0].count}}%;"></view>
+          </view>
+          <view class="tag-count">{{item.count}}次</view>
+        </view>
+      </view>
+      <view class="empty-data" wx:else>
+        <text>暂无情绪标签数据</text>
+      </view>
+    </view>
+  </block>
+</view> 

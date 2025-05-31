@@ -1,0 +1,49 @@
+/**
+ * 心灵伴侣小程序全局样式
+ */
+
+/* 导入样式文件 */
+@import "static/styles/theme.wxss";
+@import "static/styles/common.wxss";
+@import "static/styles/animation.wxss";
+@import "static/styles/components.wxss";
+
+/* 全局基础样式 */
+page {
+  font-family: var(--font-family);
+  font-size: var(--font-size-content);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
+  background-color: var(--color-background);
+  box-sizing: border-box;
+}
+
+view, text, scroll-view, swiper, button, form, input, textarea, label, navigator, image {
+  box-sizing: border-box;
+}
+
+/* 隐藏滚动条 */
+::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+/* 安全区域适配 */
+.safe-area-bottom {
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.safe-area-top {
+  padding-top: constant(safe-area-inset-top);
+  padding-top: env(safe-area-inset-top);
+}
+
+/* 页面容器 */
+.page-container {
+  min-height: 100vh;
+  background-color: var(--color-background);
+  padding: var(--spacing-sm);
+} 

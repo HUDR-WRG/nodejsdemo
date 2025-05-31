@@ -1,0 +1,172 @@
+/**
+ * 首页样式
+ */
+
+.container {
+  padding: var(--spacing-sm);
+  min-height: 100vh;
+  background-color: var(--color-background);
+}
+
+/* 头部区域 */
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--spacing-md) 0 var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+}
+
+.logo {
+  width: 30rpx;
+  height: 0rpx;
+  margin-bottom: var(--spacing-xs);
+}
+
+.title {
+  font-size: var(--font-size-title);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-xxs);
+}
+
+.subtitle {
+  font-size: var(--font-size-caption);
+  color: var(--color-text-tertiary);
+  margin-bottom: var(--spacing-md);
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background-color: #FFFFFF;
+  border-radius: var(--radius-medium);
+  box-shadow: var(--shadow-card);
+  width: 90%;
+}
+
+.avatar {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 50%;
+  margin-right: var(--spacing-xs);
+}
+
+.nickname {
+  font-size: var(--font-size-content);
+  color: var(--color-text-secondary);
+  flex: 1;
+}
+
+.logout-btn {
+  font-size: var(--font-size-caption);
+  color: var(--color-primary);
+  padding: 4rpx 16rpx;
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-small);
+}
+
+/* 网格布局 */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: var(--spacing-sm);
+  padding: 0 var(--spacing-xs);
+}
+
+.grid-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.grid-item-content {
+  background-color: #FFFFFF;
+  border-radius: var(--radius-medium);
+  box-shadow: var(--shadow-card);
+  padding: var(--spacing-md);
+  height: 340rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--animation-fast);
+}
+
+.grid-item-content:active {
+  transform: scale(0.95);
+}
+
+.grid-icon {
+  width: 100rpx;
+  height: 100rpx;
+  margin-bottom: var(--spacing-sm);
+}
+
+.grid-text {
+  font-size: var(--font-size-subtitle);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.grid-desc {
+  font-size: var(--font-size-caption);
+  color: var(--color-text-tertiary);
+  text-align: center;
+}
+
+/* 树洞倾述 */
+.grid-item:nth-child(1) .grid-item-content {
+  background-color: rgba(255, 143, 143, 0.1);
+  border: 1px solid rgba(255, 143, 143, 0.3);
+}
+
+/* 心理测试 */
+.grid-item:nth-child(2) .grid-item-content {
+  background-color: rgba(110, 181, 255, 0.1);
+  border: 1px solid rgba(110, 181, 255, 0.3);
+}
+
+/* 情绪日记 */
+.grid-item:nth-child(3) .grid-item-content {
+  background-color: rgba(255, 193, 123, 0.1);
+  border: 1px solid rgba(255, 193, 123, 0.3);
+}
+
+/* 冥想放松 */
+.grid-item:nth-child(4) .grid-item-content {
+  background-color: rgba(149, 138, 205, 0.1);
+  border: 1px solid rgba(149, 138, 205, 0.3);
+}
+
+/* 页脚 */
+.footer {
+  text-align: center;
+  margin-top: var(--spacing-lg);
+  padding: var(--spacing-md) 0;
+  font-size: var(--font-size-caption);
+  color: var(--color-text-tertiary);
+}
+
+/* 动画效果 */
+.grid-item {
+  animation: fadeInUp 0.5s ease-out;
+  animation-fill-mode: both;
+}
+
+.grid-item:nth-child(1) { animation-delay: 0.1s; }
+.grid-item:nth-child(2) { animation-delay: 0.2s; }
+.grid-item:nth-child(3) { animation-delay: 0.3s; }
+.grid-item:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+} 
