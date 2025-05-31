@@ -63,7 +63,8 @@ git clone https://github.com/HUDR-WRG/nodejsdemo.git
 
 - 用户名：test
 - 密码：123456
-修改config/wx.js已使用微信登录
+
+修改config/wx.js以使用微信登录
 
 ## 📁 项目结构
 
